@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Root",
+      "email": "root@gmail.com",
+      "password": "root",
+      "role": "root"
+    },
+    {
+      "id": 1761457921490,
+      "name": "Champa",
+      "email": "champa@gmail.com",
+      "password": "somepassword",
+      "role": "user"
+    }
+  ],
+  "products": [],
+  "categories": [],
+  "carts": [],
+  "orders": [],
+  "reviews": []
+}
