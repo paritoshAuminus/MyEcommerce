@@ -1,3 +1,5 @@
 import Header from './Header'
+import ProductCard from './ProductCard'
+import ProductDetails from './ProductDetails'
 
-export {Header}
+export {Header, ProductCard, ProductDetails}

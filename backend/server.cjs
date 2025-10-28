@@ -157,6 +157,9 @@ server.post("/categories", (req, res) => {
 // ----------------------------------------
 // CART ROUTES
 // ----------------------------------------
+
+// 🛒 GET /cart
+// Fetch all cart items belonging to the logged-in user (based on x-user-id header)
 server.get("/cart", (req, res) => {
     const userId = parseInt(req.headers["x-user-id"]);
     if (!userId) return res.status(401).json({ message: "Missing x-user-id header" });
@@ -165,6 +168,9 @@ server.get("/cart", (req, res) => {
     res.json(cart);
 });
 
+
+// 🛍️ POST /cart
+// Add a new product to the user's cart (requires userId, productId, and quantity)
 server.post("/cart", (req, res) => {
     const userId = parseInt(req.headers["x-user-id"]);
     const { productId, quantity } = req.body;
@@ -175,6 +181,9 @@ server.post("/cart", (req, res) => {
     res.status(201).json(newItem);
 });
 
+
+// ✏️ PUT /cart/:id
+// Update a specific cart item (e.g., change quantity) for the current user
 server.put("/cart/:id", (req, res) => {
     const id = parseInt(req.params.id);
     const userId = parseInt(req.headers["x-user-id"]);
@@ -185,6 +194,9 @@ server.put("/cart/:id", (req, res) => {
     res.json(updatedItem);
 });
 
+
+// 🗑️ DELETE /cart/:id
+// Remove a specific cart item for the current user
 server.delete("/cart/:id", (req, res) => {
     const id = parseInt(req.params.id);
     const userId = parseInt(req.headers["x-user-id"]);

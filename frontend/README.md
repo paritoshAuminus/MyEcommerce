@@ -46,3 +46,22 @@
     fetchUser()
   }, [])
 ```
+
+- update logged-in user's user data
+
+```
+    async function updateUsr() {
+    const response = await authService.updateUser({
+      name: 'champa',
+      email: 'champa@gmail.com',
+      password: 'somepassword',
+      token: localStorage.getItem('ecommerceToken')
+    })
+    console.log(response)
+    return response
+  }
+
+  useEffect(() => {
+    updateUsr()
+  }, [])
+```

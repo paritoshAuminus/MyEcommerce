@@ -43,7 +43,6 @@ class AuthService {
             const response = await axiosInstance.get('/auth/getUser', {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            console.log(response.data);
             // return response.data;
             return response;
         } catch (error) {
@@ -55,19 +54,23 @@ class AuthService {
     // update existing user
     async updateUser({ name, email, password, token }) {
 
+        const updatedData = {}
+
+        if (name) updatedData.name = name
+        if (email) updatedData.email = email
+        if (password) updatedData.password = password
+
         try {
-            const response = await axios.put('/auth/update', 
+            const response = await axiosInstance.put('/auth/update', 
+                updatedData,
                 {
                     headers: {Authorization: `Bearer ${token}`}
-                },
-                {
-                    name: name,
-                    email: email,
-                    password: password
                 }
             )
+            return response
         } catch (error) {
             console.log('authService error :: updateUser ::', error)
+            throw error
         }
     }
 }

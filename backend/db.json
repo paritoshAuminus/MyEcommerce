@@ -15,7 +15,173 @@
       "role": "user"
     }
   ],
-  "products": [],
+  "products": [
+    {
+      "id": 1,
+      "name": "Wireless Bluetooth Headphones",
+      "description": "Over-ear headphones with noise cancellation and 20-hour battery life.",
+      "category": "Electronics",
+      "categoryId": 1,
+      "price": 89.99,
+      "stock": 120,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.5
+    },
+    {
+      "id": 2,
+      "name": "Smart Fitness Watch",
+      "description": "Tracks heart rate, steps, and sleep with water-resistant design.",
+      "category": "Electronics",
+      "categoryId": 1,
+      "price": 59.99,
+      "stock": 200,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.3
+    },
+    {
+      "id": 3,
+      "name": "Mechanical Keyboard",
+      "description": "RGB backlit mechanical keyboard with blue switches.",
+      "category": "Electronics",
+      "categoryId": 1,
+      "price": 74.99,
+      "stock": 80,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.7
+    },
+    {
+      "id": 4,
+      "name": "Wireless Mouse",
+      "description": "Ergonomic 2.4GHz wireless mouse with adjustable DPI.",
+      "category": "Electronics",
+      "categoryId": 1,
+      "price": 24.99,
+      "stock": 150,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.4
+    },
+    {
+      "id": 5,
+      "name": "Ergonomic Office Chair",
+      "description": "Adjustable office chair with lumbar support and breathable mesh back.",
+      "category": "Furniture",
+      "categoryId": 2,
+      "price": 129.99,
+      "stock": 45,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.6
+    },
+    {
+      "id": 6,
+      "name": "Standing Desk Converter",
+      "description": "Convert your existing desk into a sit-stand workstation easily.",
+      "category": "Furniture",
+      "categoryId": 2,
+      "price": 199.99,
+      "stock": 30,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.4
+    },
+    {
+      "id": 7,
+      "name": "Gaming Mouse Pad XL",
+      "description": "Extra-large mouse pad with non-slip base and smooth surface.",
+      "category": "Gaming",
+      "categoryId": 5,
+      "price": 15.99,
+      "stock": 140,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.5
+    },
+    {
+      "id": 8,
+      "name": "Gaming Chair Pro",
+      "description": "Reclining gaming chair with adjustable armrests and lumbar cushion.",
+      "category": "Gaming",
+      "categoryId": 5,
+      "price": 199.99,
+      "stock": 20,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.7
+    },
+    {
+      "id": 9,
+      "name": "Smart LED Bulb",
+      "description": "WiFi-enabled LED bulb compatible with Alexa and Google Home.",
+      "category": "Home",
+      "categoryId": 4,
+      "price": 12.99,
+      "stock": 250,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.4
+    },
+    {
+      "id": 10,
+      "name": "Smart Thermostat",
+      "description": "Energy-saving smart thermostat with mobile app control.",
+      "category": "Home",
+      "categoryId": 4,
+      "price": 149.99,
+      "stock": 25,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.8
+    },
+    {
+      "id": 11,
+      "name": "Electric Kettle",
+      "description": "1.7L stainless steel electric kettle with auto shut-off and boil-dry protection.",
+      "category": "Kitchen",
+      "categoryId": 3,
+      "price": 29.99,
+      "stock": 90,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.6
+    },
+    {
+      "id": 12,
+      "name": "Air Fryer 4L",
+      "description": "Oil-free air fryer with digital temperature control.",
+      "category": "Kitchen",
+      "categoryId": 3,
+      "price": 89.99,
+      "stock": 40,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.7
+    },
+    {
+      "id": 13,
+      "name": "Coffee Maker",
+      "description": "Automatic drip coffee machine with programmable timer.",
+      "category": "Kitchen",
+      "categoryId": 3,
+      "price": 59.99,
+      "stock": 50,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.5
+    },
+    {
+      "id": 14,
+      "name": "Robot Vacuum Cleaner",
+      "description": "WiFi-enabled robot vacuum with scheduling and automatic docking.",
+      "category": "Home",
+      "categoryId": 4,
+      "price": 249.99,
+      "stock": 30,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.7
+    },
+    {
+      "id": 15,
+      "name": "Smart Plug",
+      "description": "WiFi smart plug that works with Alexa and Google Assistant.",
+      "category": "Home",
+      "categoryId": 4,
+      "price": 14.99,
+      "stock": 200,
+      "image": "https://via.placeholder.com/150",
+      "rating": 4.4
+    }
+  ],
   "categories": [],
   "carts": [],
   "orders": [],
