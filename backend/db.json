@@ -24,8 +24,9 @@
       "categoryId": 1,
       "price": 89.99,
       "stock": 120,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.5
+      "image": "https://placehold.co/600x400?text=Wireless+Bluetooth+Headphones&font=roboto",
+      "rating": 4.5,
+      "featured_product": true
     },
     {
       "id": 2,
@@ -35,8 +36,9 @@
       "categoryId": 1,
       "price": 59.99,
       "stock": 200,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.3
+      "image": "https://placehold.co/600x400?text=Smart+Fitness+Watch&font=roboto",
+      "rating": 4.3,
+      "featured_product": false
     },
     {
       "id": 3,
@@ -46,8 +48,9 @@
       "categoryId": 1,
       "price": 74.99,
       "stock": 80,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.7
+      "image": "https://placehold.co/600x400?text=Mechanical+Keyboard&font=roboto",
+      "rating": 4.7,
+      "featured_product": false
     },
     {
       "id": 4,
@@ -57,8 +60,9 @@
       "categoryId": 1,
       "price": 24.99,
       "stock": 150,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.4
+      "image": "https://placehold.co/600x400?text=Wireless+Mouse&font=roboto",
+      "rating": 4.4,
+      "featured_product": false
     },
     {
       "id": 5,
@@ -68,8 +72,9 @@
       "categoryId": 2,
       "price": 129.99,
       "stock": 45,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.6
+      "image": "https://placehold.co/600x400?text=Ergonomic+Office+Chair&font=roboto",
+      "rating": 4.6,
+      "featured_product": false
     },
     {
       "id": 6,
@@ -79,8 +84,9 @@
       "categoryId": 2,
       "price": 199.99,
       "stock": 30,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.4
+      "image": "https://placehold.co/600x400?text=Standing+Desk+Converter&font=roboto",
+      "rating": 4.4,
+      "featured_product": false
     },
     {
       "id": 7,
@@ -90,8 +96,9 @@
       "categoryId": 5,
       "price": 15.99,
       "stock": 140,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.5
+      "image": "https://placehold.co/600x400?text=Gaming+Pad+XL&font=roboto",
+      "rating": 4.5,
+      "featured_product": false
     },
     {
       "id": 8,
@@ -101,8 +108,9 @@
       "categoryId": 5,
       "price": 199.99,
       "stock": 20,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.7
+      "image": "https://placehold.co/600x400?text=Gaming+Chair+Pro&font=roboto",
+      "rating": 4.7,
+      "featured_product": true
     },
     {
       "id": 9,
@@ -112,8 +120,9 @@
       "categoryId": 4,
       "price": 12.99,
       "stock": 250,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.4
+      "image": "https://placehold.co/600x400?textSmart+LED+Bulb=&font=roboto",
+      "rating": 4.4,
+      "featured_product": false
     },
     {
       "id": 10,
@@ -123,8 +132,9 @@
       "categoryId": 4,
       "price": 149.99,
       "stock": 25,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.8
+      "image": "https://placehold.co/600x400?text=Smart+Thermostat&font=roboto",
+      "rating": 4.8,
+      "featured_product": true
     },
     {
       "id": 11,
@@ -134,8 +144,9 @@
       "categoryId": 3,
       "price": 29.99,
       "stock": 90,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.6
+      "image": "https://placehold.co/600x400?text=Electric+Kettle&font=roboto",
+      "rating": 4.6,
+      "featured_product": false
     },
     {
       "id": 12,
@@ -145,8 +156,9 @@
       "categoryId": 3,
       "price": 89.99,
       "stock": 40,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.7
+      "image": "https://placehold.co/600x400?text=Air+Fryer+4L&font=roboto",
+      "rating": 4.7,
+      "featured_product": false
     },
     {
       "id": 13,
@@ -156,19 +168,21 @@
       "categoryId": 3,
       "price": 59.99,
       "stock": 50,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.5
+      "image": "https://placehold.co/600x400?text=Coffee+Maker&font=roboto",
+      "rating": 4.5,
+      "featured_product": false
     },
     {
       "id": 14,
-      "name": "Robot Vacuum Cleaner",
+      "name": "Robot Vaccum Cleaner",
       "description": "WiFi-enabled robot vacuum with scheduling and automatic docking.",
       "category": "Home",
       "categoryId": 4,
       "price": 249.99,
       "stock": 30,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.7
+      "image": "https://placehold.co/600x400?text=Robot+Vaccum+Cleaner&font=roboto",
+      "rating": 4.7,
+      "featured_product": false
     },
     {
       "id": 15,
@@ -178,8 +192,9 @@
       "categoryId": 4,
       "price": 14.99,
       "stock": 200,
-      "image": "https://via.placeholder.com/150",
-      "rating": 4.4
+      "image": "https://placehold.co/600x400?text=Smart+Plug&font=roboto",
+      "rating": 4.4,
+      "featured_product": false
     }
   ],
   "categories": [],

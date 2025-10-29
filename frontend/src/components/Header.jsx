@@ -39,8 +39,8 @@ function Header() {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? "text-blue-600 font-semibold"
-                : "hover:text-blue-600 transition"
+                ? "text-indigo-600 font-semibold"
+                : "hover:text-indigo-600 transition"
             }
           >
             Home
@@ -49,8 +49,8 @@ function Header() {
             to="/products"
             className={({ isActive }) =>
               isActive
-                ? "text-blue-600 font-semibold"
-                : "hover:text-blue-600 transition"
+                ? "text-indigo-600 font-semibold"
+                : "hover:text-indigo-600 transition"
             }
           >
             Products
@@ -59,8 +59,8 @@ function Header() {
             to="/about"
             className={({ isActive }) =>
               isActive
-                ? "text-blue-600 font-semibold"
-                : "hover:text-blue-600 transition"
+                ? "text-indigo-600 font-semibold"
+                : "hover:text-indigo-600 transition"
             }
           >
             About Us
@@ -69,8 +69,8 @@ function Header() {
             to="/contact"
             className={({ isActive }) =>
               isActive
-                ? "text-blue-600 font-semibold"
-                : "hover:text-blue-600 transition"
+                ? "text-indigo-600 font-semibold"
+                : "hover:text-indigo-600 transition"
             }
           >
             Contact
@@ -79,7 +79,7 @@ function Header() {
           {/* User Icon */}
           <div className="relative" ref={dropdownRef}>
             <User
-              className="w-6 h-6 text-gray-700 hover:text-blue-600 transition cursor-pointer"
+              className="w-6 h-6 text-gray-700 hover:text-indigo-600 transition cursor-pointer"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             />
             {isDropdownOpen && (
