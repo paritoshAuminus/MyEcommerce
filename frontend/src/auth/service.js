@@ -32,6 +32,22 @@ class Services {
         }
     }
 
+
+    //--------------------------------
+    // CATEGORIES RELATED SERVICES
+    //--------------------------------
+
+    // get all categories
+    async getCategories() {
+        try {
+            const response = await axiosInstance.get('/categories')
+            return response
+        } catch (error) {
+            console.log('services error :: getCategories ::', error)
+            throw error            
+        }
+    }
+
     //-------------------------------------------------------
     // TODO: ADD METHOD HERE TO GET PRODUCT A/C TO CATEGORIES
     //-------------------------------------------------------

@@ -197,7 +197,7 @@
       "featured_product": false
     }
   ],
-  "categories": [],
+  "categories": ["Home", "Kitchen", "Gaming", "Furniture","Electronics"],
   "carts": [],
   "orders": [],
   "reviews": []

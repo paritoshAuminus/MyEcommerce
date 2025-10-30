@@ -141,10 +141,13 @@ server.delete("/products/:id", (req, res) => {
 // ----------------------------------------
 // CATEGORY ROUTES
 // ----------------------------------------
+
+// get all categories
 server.get("/categories", (req, res) => {
     res.json(router.db.get("categories").value());
 });
 
+// add new category
 server.post("/categories", (req, res) => {
     const { name } = req.body;
     if (!name) return res.status(400).json({ message: "Category name required" });

@@ -21,7 +21,7 @@ function Header() {
   }, []);
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
+    <header className="bg-white shadow-md sticky top-0 z-100">
       <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2 rounded-full">
