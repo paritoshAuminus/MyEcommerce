@@ -15,9 +15,56 @@ function Products() {
     fetchProducts()
   }, [])
 
-  //---------------------------------------------------------------
-  // TODO: CONTINUE WITH FILTER SIDEBAR DEVELOPMENT AND DEPLOYMENT
-  //---------------------------------------------------------------
+  //-----------------------------------
+  // FILTER FUNCTIONALITY AND STATES
+  //-----------------------------------
+
+  const [categoriesOpen, setCategoriesOpen] = useState(false)
+  const [categories, setCategories] = useState([])
+
+  // input states
+  const [price, setPrice] = useState(100)
+  const [rating, setRating] = useState(1)
+  const [selectedCategories, setSelectedCategories] = useState([])
+
+  const handlePrice = (e) => {
+    setPrice(e.target.value)
+  }
+
+  const handleRating = (e) => {
+    setRating(e.target.value)
+  }
+
+  useEffect(() => {
+    async function getCat() {
+      const response = await services.getCategories()
+      setCategories(response.data)
+    }
+    getCat()
+  }, [])
+  
+
+  // ------------------------------ CHAT GPT CODE -----------------------------
+  const handleCategoryChange = (e) => {
+    const { value, checked } = e.target
+
+    if (checked) {
+      setSelectedCategories((prev) => [...prev, value])
+    } else {
+      setSelectedCategories((prev) => prev.filter((item) => item !== value))
+    }
+  }
+  // ---------------------------------------------------------------------------
+
+  const filterProducts = async () => {
+    const resopnse = await services.filterProducts()
+  }
+
+  const handleReset = () => {
+    setRating(1)
+    setPrice(100)
+    setSelectedCategories([])
+  }
 
   return (
     <>
@@ -31,7 +78,24 @@ function Products() {
           </span>
         </button>
         {/* filter sidebar */}
-        {filterSidebar && <Filter setFilterSidebar={setFilterSidebar}/>}
+        {filterSidebar &&
+          <Filter
+            selectedCategories={selectedCategories}
+            setFilterSidebar={setFilterSidebar}
+            categories={categories}
+            setCategories={setCategories}
+            price={price}
+            setPrice={setPrice}
+            rating={rating}
+            setRating={setRating}
+            categoriesOpen={categoriesOpen}
+            setCategoriesOpen={setCategoriesOpen}
+            handlePrice={handlePrice}
+            handleRating={handleRating}
+            handleCategoryChange={handleCategoryChange}
+            filterProducts={filterProducts}
+            handleReset={handleReset}
+          />}
       </div>
       <div className="max-w-6xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map(product => (

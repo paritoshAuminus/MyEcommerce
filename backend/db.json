@@ -5,14 +5,16 @@
       "name": "Root",
       "email": "root@gmail.com",
       "password": "root",
-      "role": "root"
+      "role": "root",
+      "cart": []
     },
     {
       "id": 1761457921490,
       "name": "Champa",
       "email": "champa@gmail.com",
       "password": "somepassword",
-      "role": "user"
+      "role": "user",
+      "cart": []
     }
   ],
   "products": [
