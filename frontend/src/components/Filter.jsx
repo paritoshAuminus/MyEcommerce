@@ -32,12 +32,12 @@ function Filter({
       <form onSubmit={(e) => handleSubmit(e)} onReset={handleReset} className='flex flex-col'>
         {/* Categories drop down */}
         <div className='w-full shadow-md p-3'>
-          <span className='flex justify-between w-full items-center'>
+          <button type='button' className='flex w-full items-center cursor-pointer justify-between ' onClick={() => setCategoriesOpen(!categoriesOpen)}>
             <h1 className='text-lg md:text-2xl'>Categories</h1>
-            <button type='button' className='cursor-pointer' onClick={() => setCategoriesOpen(!categoriesOpen)}>
+            <span>
               {categoriesOpen ? <IoMdArrowDropup /> : <IoMdArrowDropdown />}
-            </button>
-          </span>
+            </span>
+          </button>
           {/* Categories */}
           <div
             className={`transition-all duration-500 ease-in-out overflow-hidden ${categoriesOpen ? 'max-h-96 opacity-100 mt-2' : 'max-h-0 opacity-0'

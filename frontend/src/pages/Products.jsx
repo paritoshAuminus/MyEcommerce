@@ -42,7 +42,7 @@ function Products() {
     }
     getCat()
   }, [])
-  
+
 
   // ------------------------------ CHAT GPT CODE -----------------------------
   const handleCategoryChange = (e) => {
@@ -64,6 +64,7 @@ function Products() {
       ratng: rating,
       cat: selectedCategories
     })
+    console.log(response)
   }
 
   const handleReset = () => {

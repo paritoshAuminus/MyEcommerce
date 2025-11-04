@@ -51,7 +51,7 @@ class Services {
     async filterProducts({prc, ratng, cat}) {
         let price;
         let rating;
-        let categories = []
+        let categories;
         
         if (prc) price = prc
         if (ratng) rating = ratng
@@ -59,7 +59,7 @@ class Services {
 
        try {
         const response = await axiosInstance.post('/products/filter', {
-            categories: categories,
+            categories: cat,
             price: price,
             rating: rating
         })
@@ -67,6 +67,7 @@ class Services {
         return response
        } catch (error) {
         console.log('services error :: filterProducts ::', error)
+        throw error
        }
     }
 
