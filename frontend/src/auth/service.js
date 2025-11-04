@@ -63,7 +63,6 @@ class Services {
             price: price,
             rating: rating
         })
-        console.log(response)
         return response
        } catch (error) {
         console.log('services error :: filterProducts ::', error)

@@ -199,7 +199,7 @@
       "featured_product": false
     }
   ],
-  "categories": ["Home", "Kitchen", "Gaming", "Furniture","Electronics"],
+  "categories": [{"name": "Home", "id": 1}, {"name": "Kitchen", "id": 2}, {"name": "Gaming", "id": 3}, {"name": "Furniture", "id": 4},{"name": "Electronics", "id": 5}],
   "carts": [],
   "orders": [],
   "reviews": []

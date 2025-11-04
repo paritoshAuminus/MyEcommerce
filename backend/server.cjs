@@ -120,29 +120,29 @@ server.post("/products/filter", (req, res) => {
     if (Array.isArray(categories) && categories.length > 0) {
         allCategories = router.db.get("categories").value();
 
-    //     // Convert frontend names → lowercase
-    //     const selected = categories.map(c => c.toLowerCase());
+        // Convert frontend names → lowercase
+        const selected = categories.map(c => c.toLowerCase());
 
-    //     // Find matching category IDs
-    //     const selectedIds = allCategories
-    //         .filter(cat => selected.includes(cat.name.toLowerCase()))
-    //         .map(cat => cat.id);
+        // Find matching category IDs
+        const selectedIds = allCategories
+            .filter(cat => selected.includes(cat.name.toLowerCase()))
+            .map(cat => cat.id);
 
-    //     console.log("Matched category IDs:", selectedIds);
+        console.log("Matched category IDs:", selectedIds);
 
-    //     // Filter products that belong to these category IDs
-    //     products = products.filter(p => selectedIds.includes(p.categoryId));
-    // }
-
-    // if (typeof price === "number" && !isNaN(price)) {
-    //     products = products.filter(p => p.price <= price);
-    // }
-
-    // if (typeof rating === "number" && !isNaN(rating)) {
-    //     products = products.filter(p => (p.rating || 0) >= rating);
+        // Filter products that belong to these category IDs
+        products = products.filter(p => selectedIds.includes(p.categoryId));
     }
 
-    res.status(200).json({ categories, price, rating, allCategories });
+    if (typeof price === "number" && !isNaN(price)) {
+        products = products.filter(p => p.price <= price);
+    }
+
+    if (typeof rating === "number" && !isNaN(rating)) {
+        products = products.filter(p => (p.rating || 0) >= rating);
+    }
+
+    res.status(200).json(products);
 });
 
 

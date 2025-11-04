@@ -7,11 +7,12 @@ function Products() {
   const [products, setProducts] = useState([])
   const [filterSidebar, setFilterSidebar] = useState(false)
 
+  async function fetchProducts() {
+    const response = await services.getProducts()
+    setProducts(response.data)
+  }
+
   useEffect(() => {
-    async function fetchProducts() {
-      const response = await services.getProducts()
-      setProducts(response.data)
-    }
     fetchProducts()
   }, [])
 
@@ -38,11 +39,11 @@ function Products() {
   useEffect(() => {
     async function getCat() {
       const response = await services.getCategories()
-      setCategories(response.data)
+      const names = response.data.map((item) => item.name)
+      setCategories(names)
     }
     getCat()
   }, [])
-
 
   // ------------------------------ CHAT GPT CODE -----------------------------
   const handleCategoryChange = (e) => {
@@ -56,7 +57,6 @@ function Products() {
   }
   // ---------------------------------------------------------------------------
 
-  // HANDLE SUBMIT >>> BAD REQUEST 505 AXIOS ERROR
   const handleSubmit = async (e) => {
     e.preventDefault()
     const response = await services.filterProducts({
@@ -64,13 +64,15 @@ function Products() {
       ratng: rating,
       cat: selectedCategories
     })
-    console.log(response)
+    setProducts(response.data)
+    setFilterSidebar(false)
   }
 
   const handleReset = () => {
     setRating(1)
     setPrice(100)
     setSelectedCategories([])
+    fetchProducts()
   }
 
   return (
