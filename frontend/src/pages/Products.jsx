@@ -56,8 +56,14 @@ function Products() {
   }
   // ---------------------------------------------------------------------------
 
-  const filterProducts = async () => {
-    const resopnse = await services.filterProducts()
+  // HANDLE SUBMIT >>> BAD REQUEST 505 AXIOS ERROR
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const response = await services.filterProducts({
+      prc: price,
+      ratng: rating,
+      cat: selectedCategories
+    })
   }
 
   const handleReset = () => {
@@ -93,8 +99,8 @@ function Products() {
             handlePrice={handlePrice}
             handleRating={handleRating}
             handleCategoryChange={handleCategoryChange}
-            filterProducts={filterProducts}
             handleReset={handleReset}
+            handleSubmit={handleSubmit}
           />}
       </div>
       <div className="max-w-6xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

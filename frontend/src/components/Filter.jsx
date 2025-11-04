@@ -29,7 +29,7 @@ function Filter({
         </button>
       </div>
 
-      <form onSubmit={handleSubmit} onReset={handleReset} className='flex flex-col'>
+      <form onSubmit={(e) => handleSubmit(e)} onReset={handleReset} className='flex flex-col'>
         {/* Categories drop down */}
         <div className='w-full shadow-md p-3'>
           <span className='flex justify-between w-full items-center'>

@@ -48,18 +48,26 @@ class Services {
     }
 
     // get products filtered by category
-    async filterProducts(categoryId) {
-        try {
-            // If categoryId is provided, include it as a query param
-            const response = await axiosInstance.get('/products', {
-                params: categoryId ? { categoryId } : {}
-            });
+    async filterProducts({prc, ratng, cat}) {
+        let price;
+        let rating;
+        let categories = []
+        
+        if (prc) price = prc
+        if (ratng) rating = ratng
+        categories = cat
 
-            console.log('Filtered products:', response.data);
-            return response.data;
-        } catch (error) {
-            console.error('service error :: filterProducts ::', error);
-        }
+       try {
+        const response = await axiosInstance.post('/products/filter', {
+            categories: categories,
+            price: price,
+            rating: rating
+        })
+        console.log(response)
+        return response
+       } catch (error) {
+        console.log('services error :: filterProducts ::', error)
+       }
     }
 
 
