@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Home, Products, About, Contact } from './pages'
+import { Home, Products, About, Contact, Login, Signup } from './pages'
 import { Provider } from 'react-redux'
 import store from './store/store.js'
 import ProtectedRoute from './container/Container.jsx'
@@ -21,6 +21,8 @@ createRoot(document.getElementById('root')).render(
           <Route path='/products/:id' element={<ProductDetails />} />
           <Route path='/about' element={<About />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
           <Route
             path='/cart'
             element={

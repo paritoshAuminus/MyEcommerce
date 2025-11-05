@@ -88,6 +88,7 @@ function Header() {
                   <>
                     <Link
                       to="/account"
+                      onClick={() => setIsDropdownOpen(false)}   // ✅ collapse dropdown
                       className="block px-4 py-2 text-sm hover:bg-gray-100 text-gray-700"
                     >
                       My Account
@@ -99,19 +100,21 @@ function Header() {
                       }}
                       className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 text-gray-700"
                     >
-                      Sign Out
+                      Logout
                     </button>
                   </>
                 ) : (
                   <>
                     <Link
                       to="/login"
+                      onClick={() => setIsDropdownOpen(false)}   // ✅ collapse dropdown
                       className="block px-4 py-2 text-sm hover:bg-gray-100 text-gray-700 border-b"
                     >
                       Login
                     </Link>
                     <Link
                       to="/signup"
+                      onClick={() => setIsDropdownOpen(false)}   // ✅ collapse dropdown
                       className="block px-4 py-2 text-sm hover:bg-gray-100 text-gray-700"
                     >
                       Sign Up
