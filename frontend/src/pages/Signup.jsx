@@ -8,7 +8,6 @@ import { login, logout } from './../store/authSlice'
 function Signup() {
 
     const status = useSelector((state) => state.auth.status)
-    const userData = useSelector((state) => state.auth.userData)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()

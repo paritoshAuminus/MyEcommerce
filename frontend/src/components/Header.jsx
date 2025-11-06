@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { User } from 'lucide-react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../store/authSlice';
+import { MdOutlineLogout } from "react-icons/md";
 
 function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const status = useSelector((state) => state.auth.status)
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -84,7 +89,7 @@ function Header() {
             />
             {isDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
-                {isLoggedIn ? (
+                {status ? (
                   <>
                     <Link
                       to="/account"
@@ -95,12 +100,14 @@ function Header() {
                     </Link>
                     <button
                       onClick={() => {
-                        setIsLoggedIn(false);
-                        setIsDropdownOpen(false);
+                        dispatch(logout())
+                        setIsDropdownOpen(false)
+                        navigate('/login')
                       }}
-                      className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 text-gray-700"
+                      className="w-full flex justify-between items-center text-left px-4 py-2 text-sm hover:bg-gray-100 text-gray-700"
                     >
-                      Logout
+                      <span>Logout</span>
+                      <MdOutlineLogout />
                     </button>
                   </>
                 ) : (

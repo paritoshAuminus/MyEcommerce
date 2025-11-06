@@ -7,9 +7,13 @@ function ProtectedRoute({ children }) {
     const status = useSelector((state) => state.auth.status)
     const navigate = useNavigate()
     
-    // if (status === false) {
-    //     navigate('/login')
-    // }
+    useEffect(() => {
+        if (status === false) {
+            navigate('/login')
+        }
+    }, [status, navigate])
+
+    if (status === false) return null 
 
     return children
 }

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from "react-hook-form";
 import authService from '../auth/auth';
 import { login } from '../store/authSlice';
+import { useState } from 'react';
 
 function Login() {
 
@@ -10,6 +11,8 @@ function Login() {
     const dispatch = useDispatch()
 
     const navigate = useNavigate()
+
+    const [error, setError] = useState(null)
 
     const {
         register,
@@ -19,13 +22,15 @@ function Login() {
     } = useForm();
 
     const onSubmit = async (data) => {
-        const res = await authService.login({
-            email: data.email,
-            password: data.password
-        })
-        if (res.status === 200) {
+        try {
+            const res = await authService.login({
+                email: data.email,
+                password: data.password
+            })
             dispatch(login(res.data.user))
             navigate('/')
+        } catch (error) {
+            setError(`${error}`)
         }
     };
 
@@ -110,6 +115,7 @@ function Login() {
                         Signup
                     </button>
                 </form>
+                {error && <div className='w-full text-center text-sm font-semibold text-red-500 py-2'>{error}</div>}
             </div>
         </main>
     );

@@ -22,20 +22,40 @@ class AuthService {
         }
     }
 
-    // login 
     async login({ email, password }) {
         try {
             const response = await axiosInstance.post('/auth/login', {
-                email: email,
-                password: password
-            })
-            if (response.status === 200) localStorage.setItem('ecommerceToken', response.token)
-            return response
+                email,
+                password
+            });
+
+            if (response.status === 200) {
+                localStorage.setItem('ecommerceToken', response.data.token);
+            }
+
+            return response;
         } catch (error) {
-            console.log('authService error :: login ::', error)
-            throw error
+            console.log('authService error :: login ::', error);
+
+            // Create a clean, user-friendly error message
+            let message = "Something went wrong. Please try again.";
+
+            if (error.response) {
+                if (error.response.status === 404) {
+                    message = "User not found";
+                } else if (error.response.status === 401) {
+                    message = "Invalid email or password";
+                } else if (error.response.data?.message) {
+                    message = error.response.data.message;
+                }
+            } else if (error.message) {
+                message = error.message;
+            }
+
+            throw new Error(message);
         }
     }
+
 
     // get logged in user
     async getUser({ token }) {
@@ -61,10 +81,10 @@ class AuthService {
         if (password) updatedData.password = password
 
         try {
-            const response = await axiosInstance.put('/auth/update', 
+            const response = await axiosInstance.put('/auth/update',
                 updatedData,
                 {
-                    headers: {Authorization: `Bearer ${token}`}
+                    headers: { Authorization: `Bearer ${token}` }
                 }
             )
             return response
