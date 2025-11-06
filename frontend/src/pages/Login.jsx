@@ -1,11 +1,15 @@
-import { Link } from 'react-router-dom'
-import React from 'react'
-import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from "react-hook-form";
+import authService from '../auth/auth';
+import { login } from '../store/authSlice';
 
 function Login() {
 
     const status = useSelector((state) => state.auth.status)
+    const dispatch = useDispatch()
+
+    const navigate = useNavigate()
 
     const {
         register,
@@ -14,11 +18,16 @@ function Login() {
         formState: { errors },
     } = useForm();
 
-    const onSubmit = (data) => {
-        console.log("Form submitted:", data);
-        reset(); // clear form after submit
+    const onSubmit = async (data) => {
+        const res = await authService.login({
+            email: data.email,
+            password: data.password
+        })
+        if (res.status === 200) {
+            dispatch(login(res.data.user))
+            navigate('/')
+        }
     };
-
 
     if (status)
         return (
@@ -81,8 +90,8 @@ function Login() {
                                     message: 'Password must be atleast 6 characters'
                                 },
                                 maxLength: {
-                                    value: 10,
-                                    message: 'Password must not exceed 10 characters'
+                                    value: 20,
+                                    message: 'Password must not exceed 20 characters'
                                 }
                             })}
                         />
@@ -96,7 +105,7 @@ function Login() {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded-full transition duration-200"
+                        className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded-full transition duration-200 cursor-pointer"
                     >
                         Signup
                     </button>

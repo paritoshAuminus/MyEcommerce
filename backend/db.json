@@ -4,17 +4,51 @@
       "id": 1,
       "name": "Root",
       "email": "root@gmail.com",
-      "password": "root",
+      "password": "rootpass",
       "role": "root",
       "cart": []
     },
     {
-      "id": 1761457921490,
-      "name": "Champa",
-      "email": "champa@gmail.com",
-      "password": "somepassword",
-      "role": "user",
-      "cart": []
+      "id": 1762422350455,
+      "name": "userOne",
+      "email": "userone@gmail.com",
+      "password": "somepass",
+      "role": "user"
+    },
+    {
+      "id": 1762422552471,
+      "name": "userTwo",
+      "email": "usertwo@gmail.com",
+      "password": "somepass",
+      "role": "user"
+    },
+    {
+      "id": 1762422885631,
+      "name": "userThree",
+      "email": "userthree@gmail.com",
+      "password": "somepass",
+      "role": "user"
+    },
+    {
+      "id": 1762422927783,
+      "name": "userFour",
+      "email": "userfour@gmail.com",
+      "password": "somepass",
+      "role": "user"
+    },
+    {
+      "id": 1762422951198,
+      "name": "userfive",
+      "email": "userfive@gmail.com",
+      "password": "somepass",
+      "role": "user"
+    },
+    {
+      "id": 1762422980751,
+      "name": "userSix",
+      "email": "usersix@gmail.com",
+      "password": "somepass",
+      "role": "user"
     }
   ],
   "products": [
@@ -199,7 +233,28 @@
       "featured_product": false
     }
   ],
-  "categories": [{"name": "Home", "id": 1}, {"name": "Kitchen", "id": 2}, {"name": "Gaming", "id": 3}, {"name": "Furniture", "id": 4},{"name": "Electronics", "id": 5}],
+  "categories": [
+    {
+      "name": "Home",
+      "id": 1
+    },
+    {
+      "name": "Kitchen",
+      "id": 2
+    },
+    {
+      "name": "Gaming",
+      "id": 3
+    },
+    {
+      "name": "Furniture",
+      "id": 4
+    },
+    {
+      "name": "Electronics",
+      "id": 5
+    }
+  ],
   "carts": [],
   "orders": [],
   "reviews": []

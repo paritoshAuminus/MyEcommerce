@@ -29,7 +29,7 @@ class AuthService {
                 email: email,
                 password: password
             })
-            localStorage.setItem('ecommerceToken', response.data.token)
+            if (response.status === 200) localStorage.setItem('ecommerceToken', response.token)
             return response
         } catch (error) {
             console.log('authService error :: login ::', error)
@@ -72,6 +72,11 @@ class AuthService {
             console.log('authService error :: updateUser ::', error)
             throw error
         }
+    }
+
+    // logout
+    async logout() {
+        localStorage.removeItem('ecommerceToken')
     }
 }
 

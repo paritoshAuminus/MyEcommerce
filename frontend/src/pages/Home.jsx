@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useSyncExternalStore } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ShoppingBag, Star } from "lucide-react";
 import services from '../auth/service';
 import { Link } from 'react-router-dom';

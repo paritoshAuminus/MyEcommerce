@@ -1,12 +1,17 @@
-import { Link } from 'react-router-dom'
-import React from 'react'
-import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from "react-hook-form";
 import authService from './../auth/auth'
+import { login, logout } from './../store/authSlice'
 
 function Signup() {
 
     const status = useSelector((state) => state.auth.status)
+    const userData = useSelector((state) => state.auth.userData)
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const {
         register,
@@ -16,20 +21,25 @@ function Signup() {
     } = useForm();
 
     const onSubmit = async (data) => {
-        console.log("Form submitted:", data);
-        // send data to backend
+        // send data to backend (signup)
         const response = await authService.signup({
             name: data.name,
             email: data.email,
             password: data.password
         })
 
-        /* GRACEFULLY HANDLE ERROR WHERE USER ALREADY EXISTS AND CONTINUE SIGNUP
-        PROCEDURE */
-
-        reset(); // clear form after submit
-    };
-
+        if (response.status === 201) {  // User registered succesfully
+            // login
+            const res = await authService.login({
+                email: data.email,
+                password: data.password
+            })
+            if (res.status === 200) {
+                dispatch(login(res.data.user))
+                navigate('/')
+            }
+        }
+    }
 
     if (status)
         return (
@@ -37,6 +47,7 @@ function Signup() {
                 <div className='flex gap-0.5 flex-col items-center'>
                     <p>You are already logged in</p>
                     <p>Go to <Link to='/' className='text-indigo-500 hover:text-indigo-600 transition font-semibold'>home page</Link></p>
+                    <button onClick={() => dispatch(logout())} className='bg-indigo-600 px-3 py-2 text-white'>Logout</button>
                 </div>
             </div>
         )
@@ -112,8 +123,8 @@ function Signup() {
                                     message: 'Password must be atleast 6 characters'
                                 },
                                 maxLength: {
-                                    value: 10,
-                                    message: 'Password must not exceed 10 characters'
+                                    value: 20,
+                                    message: 'Password must not exceed 20 characters'
                                 }
                             })}
                         />
@@ -127,7 +138,7 @@ function Signup() {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded-full transition duration-200"
+                        className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 rounded-full transition duration-200 cursor-pointer"
                     >
                         Signup
                     </button>
