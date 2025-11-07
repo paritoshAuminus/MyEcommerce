@@ -23,7 +23,7 @@ axiosInstance.interceptors.response.use((response) => response, async (error) =>
     } else if (error.response?.status === 409) {
         window.alert('Email already in use❗')
     } else {
-        window.alert('Something went wrong ❌')
+        console.log('Something went wrong ❌')
     }
     return Promise.reject(error)
 })

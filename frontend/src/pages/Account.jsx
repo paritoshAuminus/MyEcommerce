@@ -42,7 +42,7 @@ const Account = () => {
                     <p className="text-gray-600 mb-4">
                         View your recent purchases, order details, and track deliveries.
                     </p>
-                    <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg transition">
+                    <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
                         View Orders
                     </button>
                 </div>
@@ -51,10 +51,10 @@ const Account = () => {
                 <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
                     <h3 className="text-xl font-semibold text-gray-800 mb-3">Wishlist</h3>
                     <p className="text-gray-600 mb-4">
-                        Keep track of the items you love and save them for later.
+                        Keep track of the items you save and buy later.
                     </p>
-                    <button className="bg-purple-600 hover:bg-purple-500 text-white font-semibold px-4 py-2 rounded-lg transition">
-                        View Wishlist
+                    <button className="bg-purple-600 hover:bg-purple-500 text-white font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
+                        View Cart
                     </button>
                 </div>
 
@@ -64,7 +64,7 @@ const Account = () => {
                     <p className="text-gray-600 mb-4">
                         Update your personal information, passwords, and preferences.
                     </p>
-                    <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg transition">
+                    <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
                         Edit Profile
                     </button>
                 </div>
@@ -85,7 +85,7 @@ const Account = () => {
                                 Springfield, USA<br />
                                 ZIP: 12345
                             </p>
-                            <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg transition">
+                            <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
                                 Edit Address
                             </button>
                         </div>

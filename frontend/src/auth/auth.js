@@ -63,11 +63,21 @@ class AuthService {
             const response = await axiosInstance.get('/auth/getUser', {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            // return response.data;
             return response;
         } catch (error) {
-            console.error('authService error :: getUser ::', error.response?.data || error);
-            throw error;
+            console.log('authService error :: getUser ::', error);
+
+            let message = 'Something went wrong, please try again.'
+
+            // console.log(error.status)
+
+            if (error) {
+                if (error.status === 403) {
+                    message = 'Token expired, please login again'
+                }
+            }
+
+            throw new Error(message);
         }
     }
 

@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import authService from '../auth/auth';
 import { login } from '../store/authSlice';
 import { useState } from 'react';
+import { toast, Bounce } from 'react-toastify';
+import { useEffect } from 'react';
 
 function Login() {
 
@@ -17,7 +19,6 @@ function Login() {
     const {
         register,
         handleSubmit,
-        reset,
         formState: { errors },
     } = useForm();
 
@@ -33,6 +34,22 @@ function Login() {
             setError(`${error}`)
         }
     };
+
+    useEffect(() => {
+        if (error) {
+            toast.error(error, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            })
+        }
+    }, [error])
 
     if (status)
         return (
@@ -115,7 +132,9 @@ function Login() {
                         Signup
                     </button>
                 </form>
-                {error && <div className='w-full text-center text-sm font-semibold text-red-500 py-2'>{error}</div>}
+                <div className='flex items-center justify-center text-sm text-gray-600 mt-2'>
+                    <p>Don't have an account?<Link to={'/signup'} className='text-indigo-600 font-semibold'>Signup</Link></p>
+                </div>
             </div>
         </main>
     );

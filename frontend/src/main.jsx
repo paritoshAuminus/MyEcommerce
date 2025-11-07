@@ -8,6 +8,8 @@ import { Provider } from 'react-redux'
 import store from './store/store.js'
 import ProtectedRoute from './container/Container.jsx'
 import ProductDetails from './components/ProductDetails.jsx'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
 
 
 createRoot(document.getElementById('root')).render(
@@ -15,6 +17,7 @@ createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <BrowserRouter>
         <App />
+        <ToastContainer />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<Products />} />

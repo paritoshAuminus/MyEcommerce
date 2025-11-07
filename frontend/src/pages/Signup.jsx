@@ -142,6 +142,9 @@ function Signup() {
                         Signup
                     </button>
                 </form>
+                <div className='flex items-center justify-center text-sm text-gray-600 mt-2'>
+                    <p>Already have an account?<Link to={'/login'} className='text-indigo-600 font-semibold'>Login</Link></p>
+                </div>
             </div>
         </main>
     );

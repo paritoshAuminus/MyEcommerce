@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { ShoppingBag, Star } from "lucide-react";
 import services from '../auth/service';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export function Home() {
 
     const [featuredProducts, setFeaturedProducts] = useState([])
     const [loading, setLoading] = useState(false)
+    const status = useSelector((state) => state.auth.status)
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -16,6 +18,7 @@ export function Home() {
                 if (response.status === 200) {
                     const featured = response.data.filter(item => item.featured_product);
                     setFeaturedProducts(featured)
+                    const products = response.data
                 }
             } finally {
                 setLoading(false);
@@ -24,6 +27,7 @@ export function Home() {
 
         fetchProducts();
     }, []);
+
 
     return (
         <main className="bg-gray-50 min-h-screen">
@@ -83,14 +87,16 @@ export function Home() {
             </section>
 
             {/* Call to Action Footer */}
-            <section className="bg-white py-12 text-center border-t border-gray-200">
+            {!status && <section className="bg-white py-12 text-center border-t border-gray-200">
                 <h3 className="text-2xl font-semibold text-gray-800 mb-4">
                     Join thousands of happy customers!
                 </h3>
                 <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 px-6 rounded-full transition">
                     Create Your Account
                 </button>
-            </section>
+            </section>}
+
+            {/* ADD SIX PRODUCTS */}
         </main>
     );
 };
