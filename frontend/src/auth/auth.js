@@ -1,4 +1,5 @@
 import axiosInstance from './../api/api'
+import { token } from './../api/api'
 
 // ------------------------------------
 // AUTH SERVICES
@@ -58,18 +59,15 @@ class AuthService {
 
 
     // get logged in user
-    async getUser({ token }) {
+    async getUser() {
+        if (!token) throw new Error('User not found')
         try {
             const response = await axiosInstance.get('/auth/getUser', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             return response;
         } catch (error) {
-            console.log('authService error :: getUser ::', error);
-
             let message = 'Something went wrong, please try again.'
-
-            // console.log(error.status)
 
             if (error) {
                 if (error.status === 403) {

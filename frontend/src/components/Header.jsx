@@ -3,7 +3,7 @@ import { User } from 'lucide-react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../store/authSlice';
-import { MdOutlineLogout } from "react-icons/md";
+import { MdOutlineLogout, MdOutlineShoppingCart } from "react-icons/md";
 
 function Header() {
   const status = useSelector((state) => state.auth.status)
@@ -79,6 +79,16 @@ function Header() {
             }
           >
             Contact
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className={({ isActive }) =>
+              isActive
+                ? "text-indigo-600 font-semibold text-2xl"
+                : "hover:text-indigo-600 transition text-2xl"
+            }
+          >
+            <MdOutlineShoppingCart />
           </NavLink>
 
           {/* User Icon */}

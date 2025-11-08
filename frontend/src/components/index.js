@@ -2,5 +2,6 @@ import Header from './Header'
 import ProductCard from './ProductCard'
 import ProductDetails from './ProductDetails'
 import Filter from './Filter'
+import CartItem from './CartItem'
 
-export {Header, ProductCard, ProductDetails, Filter}
+export {Header, ProductCard, ProductDetails, Filter, CartItem}

@@ -157,11 +157,11 @@ server.post('/products', verifyToken, (req, res) => {
     if (req.user.role !== 'admin')
         return res.status(403).json({ message: 'Admin access only' })
 
-    const { title, description, price, categoryId, stock } = req.body
-    if (!title || !price || !categoryId)
-        return res.status(400).json({ message: 'Title, price, and category required' })
+    const { name, description, price, categoryId, stock } = req.body
+    if (!name || !price || !categoryId)
+        return res.status(400).json({ message: 'Name, price, and category required' })
 
-    const newProduct = { id: Date.now(), title, description, price, categoryId, stock: stock || 0 }
+    const newProduct = { id: Date.now(), name, description, price, categoryId, stock: stock || 0 }
     router.db.get('products').push(newProduct).write()
     res.status(201).json(newProduct)
 })
@@ -209,53 +209,59 @@ server.post('/categories', verifyToken, (req, res) => {
 })
 
 // ----------------------------------------------------------------------
-// CART, ORDERS, REVIEWS (unchanged logic)
+// CART, ORDERS, REVIEWS
 // ----------------------------------------------------------------------
-server.get('/cart', (req, res) => {
-    const userId = parseInt(req.headers['x-user-id'])
-    if (!userId) return res.status(401).json({ message: 'Missing x-user-id header' })
+
+// get cart
+server.get('/cart', verifyToken, (req, res) => {
+    const userId = req.user.id
     const cart = router.db.get('carts').filter({ userId }).value()
     res.json(cart)
 })
 
-server.post('/cart', (req, res) => {
-    const userId = parseInt(req.headers['x-user-id'])
+// add product to the cart
+server.post('/cart', verifyToken, (req, res) => {
+    const userId = req.user.id
     const { productId, quantity } = req.body
-    if (!userId || !productId || !quantity)
-        return res.status(400).json({ message: 'User, productId, and quantity required' })
+    if (!productId || !quantity)
+        return res.status(400).json({ message: 'productId and quantity required' })
 
     const newItem = { id: Date.now(), userId, productId, quantity }
     router.db.get('carts').push(newItem).write()
     res.status(201).json(newItem)
 })
 
-server.put('/cart/:id', (req, res) => {
+// update cart
+server.put('/cart/:id', verifyToken, (req, res) => {
     const id = parseInt(req.params.id)
-    const userId = parseInt(req.headers['x-user-id'])
+    const userId = req.user.id
     const item = router.db.get('carts').find({ id, userId }).value()
     if (!item) return res.status(404).json({ message: 'Cart item not found' })
+
     const updatedItem = router.db.get('carts').find({ id }).assign(req.body).write()
     res.json(updatedItem)
 })
 
-server.delete('/cart/:id', (req, res) => {
+// delete cart item
+server.delete('/cart/:id', verifyToken, (req, res) => {
     const id = parseInt(req.params.id)
-    const userId = parseInt(req.headers['x-user-id'])
+    const userId = req.user.id
     const item = router.db.get('carts').find({ id, userId }).value()
     if (!item) return res.status(404).json({ message: 'Cart item not found' })
+
     router.db.get('carts').remove({ id }).write()
     res.status(204).end()
 })
 
-server.get('/orders', (req, res) => {
-    const userId = parseInt(req.headers['x-user-id'])
-    if (!userId) return res.status(401).json({ message: 'Missing x-user-id header' })
+// orders
+server.get('/orders', verifyToken, (req, res) => {
+    const userId = req.user.id
     const orders = router.db.get('orders').filter({ userId }).value()
     res.json(orders)
 })
 
-server.post('/orders', (req, res) => {
-    const userId = parseInt(req.headers['x-user-id'])
+server.post('/orders', verifyToken, (req, res) => {
+    const userId = req.user.id
     const { items, total } = req.body
     if (!items || !total)
         return res.status(400).json({ message: 'Items and total required' })

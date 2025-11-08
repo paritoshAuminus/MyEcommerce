@@ -1,6 +1,7 @@
 import axios from "axios"
 
 export const BASE_URL = 'http://localhost:8080'
+export const token = localStorage.getItem('ecommerceToken')
 
 // ✅ AXIOS INSTANCE
 const axiosInstance = axios.create({

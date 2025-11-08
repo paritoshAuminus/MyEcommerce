@@ -2,10 +2,17 @@ import { useEffect, useState } from 'react'
 import { ProductCard, Filter } from './../components'
 import services from '../auth/service'
 import { FaFilter } from "react-icons/fa6";
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { setCart } from './../store/cartSlice'
 
 function Products() {
   const [products, setProducts] = useState([])
   const [filterSidebar, setFilterSidebar] = useState(false)
+  const status = useSelector((state) => state.auth.status)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
 
   async function fetchProducts() {
     const response = await services.getProducts()
@@ -75,6 +82,14 @@ function Products() {
     fetchProducts()
   }
 
+  const handleAddToCart = async (productId) => {
+    if (!status) navigate('/login')
+    const response = await services.addToCart({
+      productId: productId
+    })
+    dispatch(setCart(response.data))
+  }
+
   return (
     <>
       <div className='w-full flex justify-end bg-white shadow-md p-5 text-white text-lg md:text-2xl relative'>
@@ -108,7 +123,7 @@ function Products() {
       </div>
       <div className="max-w-6xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map(product => (
-          <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} handleAddToCart={handleAddToCart} />
         ))}
       </div>
     </>

@@ -5,8 +5,7 @@
       "name": "Root",
       "email": "root@gmail.com",
       "password": "rootpass",
-      "role": "root",
-      "cart": []
+      "role": "root"
     },
     {
       "id": 1762422350455,
@@ -60,7 +59,7 @@
       "categoryId": 1,
       "price": 89.99,
       "stock": 120,
-      "image": "https://placehold.co/600x400?text=Wireless+Bluetooth+Headphones&font=roboto",
+      "image": "https://placehold.co/600x400/D6EAF8/1B4F72?text=Wireless+Bluetooth+Headphones&font=roboto",
       "rating": 4.5,
       "featured_product": true
     },
@@ -72,7 +71,7 @@
       "categoryId": 1,
       "price": 59.99,
       "stock": 200,
-      "image": "https://placehold.co/600x400?text=Smart+Fitness+Watch&font=roboto",
+      "image": "https://placehold.co/600x400/D1F2EB/117864?text=Smart+Fitness+Watch&font=roboto",
       "rating": 4.3,
       "featured_product": false
     },
@@ -84,7 +83,7 @@
       "categoryId": 1,
       "price": 74.99,
       "stock": 80,
-      "image": "https://placehold.co/600x400?text=Mechanical+Keyboard&font=roboto",
+      "image": "https://placehold.co/600x400/EBF5FB/154360?text=Mechanical+Keyboard&font=roboto",
       "rating": 4.7,
       "featured_product": false
     },
@@ -96,7 +95,7 @@
       "categoryId": 1,
       "price": 24.99,
       "stock": 150,
-      "image": "https://placehold.co/600x400?text=Wireless+Mouse&font=roboto",
+      "image": "https://placehold.co/600x400/D4E6F1/1A5276?text=Wireless+Mouse&font=roboto",
       "rating": 4.4,
       "featured_product": false
     },
@@ -108,7 +107,7 @@
       "categoryId": 2,
       "price": 129.99,
       "stock": 45,
-      "image": "https://placehold.co/600x400?text=Ergonomic+Office+Chair&font=roboto",
+      "image": "https://placehold.co/600x400/E9F7EF/145A32?text=Ergonomic+Office+Chair&font=roboto",
       "rating": 4.6,
       "featured_product": false
     },
@@ -120,7 +119,7 @@
       "categoryId": 2,
       "price": 199.99,
       "stock": 30,
-      "image": "https://placehold.co/600x400?text=Standing+Desk+Converter&font=roboto",
+      "image": "https://placehold.co/600x400/D5F5E3/1D8348?text=Standing+Desk+Converter&font=roboto",
       "rating": 4.4,
       "featured_product": false
     },
@@ -132,7 +131,7 @@
       "categoryId": 5,
       "price": 15.99,
       "stock": 140,
-      "image": "https://placehold.co/600x400?text=Gaming+Pad+XL&font=roboto",
+      "image": "https://placehold.co/600x400/E8DAEF/4A235A?text=Gaming+Mouse+Pad+XL&font=roboto",
       "rating": 4.5,
       "featured_product": false
     },
@@ -144,7 +143,7 @@
       "categoryId": 5,
       "price": 199.99,
       "stock": 20,
-      "image": "https://placehold.co/600x400?text=Gaming+Chair+Pro&font=roboto",
+      "image": "https://placehold.co/600x400/F4ECF7/512E5F?text=Gaming+Chair+Pro&font=roboto",
       "rating": 4.7,
       "featured_product": true
     },
@@ -156,7 +155,7 @@
       "categoryId": 4,
       "price": 12.99,
       "stock": 250,
-      "image": "https://placehold.co/600x400?textSmart+LED+Bulb=&font=roboto",
+      "image": "https://placehold.co/600x400/FEF5E7/7E5109?text=Smart+LED+Bulb&font=roboto",
       "rating": 4.4,
       "featured_product": false
     },
@@ -168,7 +167,7 @@
       "categoryId": 4,
       "price": 149.99,
       "stock": 25,
-      "image": "https://placehold.co/600x400?text=Smart+Thermostat&font=roboto",
+      "image": "https://placehold.co/600x400/FDEBD0/935116?text=Smart+Thermostat&font=roboto",
       "rating": 4.8,
       "featured_product": true
     },
@@ -180,7 +179,7 @@
       "categoryId": 3,
       "price": 29.99,
       "stock": 90,
-      "image": "https://placehold.co/600x400?text=Electric+Kettle&font=roboto",
+      "image": "https://placehold.co/600x400/FDEDEC/922B21?text=Electric+Kettle&font=roboto",
       "rating": 4.6,
       "featured_product": false
     },
@@ -192,7 +191,7 @@
       "categoryId": 3,
       "price": 89.99,
       "stock": 40,
-      "image": "https://placehold.co/600x400?text=Air+Fryer+4L&font=roboto",
+      "image": "https://placehold.co/600x400/FADBD8/7B241C?text=Air+Fryer+4L&font=roboto",
       "rating": 4.7,
       "featured_product": false
     },
@@ -204,19 +203,19 @@
       "categoryId": 3,
       "price": 59.99,
       "stock": 50,
-      "image": "https://placehold.co/600x400?text=Coffee+Maker&font=roboto",
+      "image": "https://placehold.co/600x400/F5B7B1/641E16?text=Coffee+Maker&font=roboto",
       "rating": 4.5,
       "featured_product": false
     },
     {
       "id": 14,
-      "name": "Robot Vaccum Cleaner",
+      "name": "Robot Vacuum Cleaner",
       "description": "WiFi-enabled robot vacuum with scheduling and automatic docking.",
       "category": "Home",
       "categoryId": 4,
       "price": 249.99,
       "stock": 30,
-      "image": "https://placehold.co/600x400?text=Robot+Vaccum+Cleaner&font=roboto",
+      "image": "https://placehold.co/600x400/FDEBD0/6E2C00?text=Robot+Vacuum+Cleaner&font=roboto",
       "rating": 4.7,
       "featured_product": false
     },
@@ -228,7 +227,7 @@
       "categoryId": 4,
       "price": 14.99,
       "stock": 200,
-      "image": "https://placehold.co/600x400?text=Smart+Plug&font=roboto",
+      "image": "https://placehold.co/600x400/FFF5E1/935116?text=Smart+Plug&font=roboto",
       "rating": 4.4,
       "featured_product": false
     }
@@ -255,7 +254,24 @@
       "id": 5
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "id": 1762582595571,
+      "userId": 1762422980751,
+      "productId": {
+        "productId": 2
+      },
+      "quantity": 1
+    },
+    {
+      "id": 1762582630389,
+      "userId": 1762422980751,
+      "productId": {
+        "productId": 1
+      },
+      "quantity": 1
+    }
+  ],
   "orders": [],
   "reviews": []
 }

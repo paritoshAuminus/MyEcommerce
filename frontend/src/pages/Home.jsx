@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { ShoppingBag, Star } from "lucide-react";
+import { FaBagShopping } from "react-icons/fa6";
 import services from '../auth/service';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { ProductCard } from './../components'
 
 export function Home() {
 
     const [featuredProducts, setFeaturedProducts] = useState([])
+    const [products, setProducts] = useState([])
     const [loading, setLoading] = useState(false)
     const status = useSelector((state) => state.auth.status)
 
@@ -18,13 +21,12 @@ export function Home() {
                 if (response.status === 200) {
                     const featured = response.data.filter(item => item.featured_product);
                     setFeaturedProducts(featured)
-                    const products = response.data
+                    setProducts(response.data.slice(0, 6))
                 }
             } finally {
                 setLoading(false);
             }
         };
-
         fetchProducts();
     }, []);
 
@@ -96,7 +98,19 @@ export function Home() {
                 </button>
             </section>}
 
-            {/* ADD SIX PRODUCTS */}
+            {/* Set products */}
+            <section className='max-w-6xl mx-auto py-16 px-6 border-t border-gray-400'>
+                <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center flex items-center justify-center gap-2">
+                    <FaBagShopping className="text-indigo-400 w-8 h-8" /> Shop Now
+                </h2>
+                <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-8'>
+                    {products && products.map((item) => (
+                        <div key={item.id}>
+                            <ProductCard product={item} />
+                        </div>
+                    ))}
+                </div>
+            </section>
         </main>
     );
 };

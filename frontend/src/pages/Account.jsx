@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Account = () => {
 
@@ -38,35 +39,47 @@ const Account = () => {
             <section className="max-w-6xl mx-auto py-10 px-6 md:px-12 grid gap-8 md:grid-cols-3">
                 {/* Orders */}
                 <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-3">My Orders</h3>
-                    <p className="text-gray-600 mb-4">
-                        View your recent purchases, order details, and track deliveries.
-                    </p>
-                    <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
-                        View Orders
-                    </button>
+                    <div className="flex flex-col justify-between">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-3">My Orders</h3>
+                        <p className="text-gray-600 mb-4">
+                            View your recent purchases, order details, and track deliveries.
+                        </p>
+                    </div>
+                    <div className="flex justify-self-start items-center">
+                        <Link to={'/orders'} className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
+                            View Orders
+                        </Link>
+                    </div>
                 </div>
 
                 {/* Wishlist */}
-                <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-3">Wishlist</h3>
-                    <p className="text-gray-600 mb-4">
-                        Keep track of the items you save and buy later.
-                    </p>
-                    <button className="bg-purple-600 hover:bg-purple-500 text-white font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
-                        View Cart
-                    </button>
+                <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition flex flex-col justify-between">
+                    <div className="flex flex-col justify-between">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-3">Cart</h3>
+                        <p className="text-gray-600 mb-4">
+                            Keep track of the items you save and buy later.
+                        </p>
+                    </div>
+                    <div className="flex justify-self-start items-center">
+                        <Link to={'/cart'} className="bg-purple-600 hover:bg-purple-500 text-white font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
+                            View Cart
+                        </Link>
+                    </div>
                 </div>
 
                 {/* Settings */}
                 <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-3">Account Settings</h3>
-                    <p className="text-gray-600 mb-4">
-                        Update your personal information, passwords, and preferences.
-                    </p>
-                    <button className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
-                        Edit Profile
-                    </button>
+                    <div className="flex flex-col justify-between">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-3">Account Settings</h3>
+                        <p className="text-gray-600 mb-4">
+                            Update your personal information, passwords, and preferences.
+                        </p>
+                    </div>
+                    <div className="flex justify-self-start items-center">
+                        <Link to={'/profile'} className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
+                            Edit Profile
+                        </Link>
+                    </div>
                 </div>
             </section>
 

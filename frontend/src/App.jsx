@@ -5,6 +5,7 @@ import services from './auth/service'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast, Bounce } from 'react-toastify'
 import { login } from './store/authSlice'
+import { setCart } from './store/cartSlice'
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await authService.getUser({ token: localStorage.getItem('ecommerceToken') })
+        const response = await authService.getUser()
         dispatch(login(response.data.user))
       } catch (error) {
         console.log(error)
@@ -22,6 +23,26 @@ function App() {
     }
     getUser()
   }, [])
+
+  useEffect(() => {
+    const cartFetcher = async () => {
+      try {
+        const cartRes = await services.getCart();
+        const productRes = await services.getProducts();
+
+        const cartResult = cartRes.data.map((c) => productRes.data.find((p) => p.id === c.productId.productId))
+        console.log(cartResult)
+        dispatch(setCart(cartResult))
+      } catch (err) {
+        console.error("Failed to fetch cart:", err);
+      }
+    };
+
+    cartFetcher();
+  }, []);
+
+
+
 
   useEffect(() => {
     status ?

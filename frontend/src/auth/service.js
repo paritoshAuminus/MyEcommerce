@@ -1,5 +1,5 @@
 import axiosInstance from "../api/api";
-
+import { token } from "../api/api";
 //------------------------------------
 // ACCESSIBILITY RELATED SERVICES
 //------------------------------------
@@ -48,32 +48,66 @@ class Services {
     }
 
     // get products filtered by category
-    async filterProducts({prc, ratng, cat}) {
+    async filterProducts({ prc, ratng, cat }) {
         let price;
         let rating;
-        let categories;
-        
+
         if (prc) price = prc
         if (ratng) rating = ratng
         categories = cat
 
-       try {
-        const response = await axiosInstance.post('/products/filter', {
-            categories: cat,
-            price: price,
-            rating: rating
-        })
-        return response
-       } catch (error) {
-        console.log('services error :: filterProducts ::', error)
-        throw error
-       }
+        try {
+            const response = await axiosInstance.post('/products/filter', {
+                categories: cat,
+                price: price,
+                rating: rating
+            })
+            return response
+        } catch (error) {
+            console.log('services error :: filterProducts ::', error)
+            throw error
+        }
     }
 
 
     //--------------------------------------
     // CART RELATED SERVICES
     //--------------------------------------
+
+    // get cart items
+    async getCart() {
+        if (!localStorage.getItem('ecommerceToken')) {
+            throw new Error('services error :: getCart :: You are logged out')
+        }
+        try {
+            const response = await axiosInstance.get('/cart', {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('ecommerceToken')}`
+                }
+            })
+            return response
+        } catch (error) {
+            throw error
+        }
+    }
+
+    // add to cart
+    async addToCart({ productId, quantity = 1 }) {
+        try {
+            const response = await axiosInstance.post(
+                '/cart',
+                { productId, quantity },
+                {
+                    headers: { Authorization: `Bearer ${token}` }
+                }
+            );
+            return response;
+        } catch (error) {
+            console.error('services error :: addToCart ::', error);
+            throw error;
+        }
+    }
+
 
     //--------------------------------------
     // ORDERS RELATED SERVICES

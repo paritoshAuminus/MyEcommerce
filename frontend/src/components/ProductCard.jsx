@@ -1,17 +1,23 @@
 // src/components/ProductCard.jsx
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-function ProductCard({ product }) {
+function ProductCard({ product, handleAddToCart }) {
   const navigate = useNavigate()
 
   const handleClick = () => {
     navigate(`/products/${product.id}`)
   }
 
+  const handleAdd = (e) => {
+    e.stopPropagation(); // stops the click from reaching the parent div
+    handleAddToCart({ productId: product.id });
+  }
+
   return (
     <div
       onClick={handleClick}
-      className="cursor-pointer border rounded-lg shadow-sm hover:shadow-md p-4 transition duration-200 bg-white"
+      className="cursor-pointer border border-gray-200 rounded-lg shadow-sm hover:shadow-md p-4 transition duration-200 bg-white"
     >
       <img
         src={product.image}
@@ -33,6 +39,12 @@ function ProductCard({ product }) {
           ({product.rating.toFixed(1)})
         </span>
       </div>
+      <button
+        onClick={(e) => handleAdd(e)}
+        className='w-full py-2 text-white bg-indigo-600 hover:bg-indigo-500 cursor-pointer my-1 rounded-lg'
+      >
+        Add to Cart
+      </button>
     </div>
   )
 }
