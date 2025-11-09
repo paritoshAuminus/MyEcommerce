@@ -67,8 +67,7 @@ server.post('/auth/login', (req, res) => {
     // create JWT token
     const token = jwt.sign(
         { id: user.id, email: user.email, role: user.role },
-        SECRET_KEY,
-        { expiresIn: '1h' }
+        SECRET_KEY
     )
 
     res.json({

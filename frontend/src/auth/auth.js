@@ -80,7 +80,7 @@ class AuthService {
     }
 
     // update existing user
-    async updateUser({ name, email, password, token }) {
+    async updateUser({ name, email, password }) {
 
         const updatedData = {}
 

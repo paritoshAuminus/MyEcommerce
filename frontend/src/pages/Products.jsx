@@ -5,6 +5,7 @@ import { FaFilter } from "react-icons/fa6";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setCart } from './../store/cartSlice'
+import { Bounce, toast } from 'react-toastify';
 
 function Products() {
   const [products, setProducts] = useState([])
@@ -87,7 +88,15 @@ function Products() {
     const response = await services.addToCart({
       productId: productId
     })
-    dispatch(setCart(response.data))
+    const cartRes = await services.getCart()
+    dispatch(setCart(cartRes.data))
+    toast.success('Item added to cart', {
+      transition: Bounce,
+      autoClose: 5000,
+      pauseOnHover: true,
+      draggable: true,
+      position: 'top-right'
+    })
   }
 
   return (

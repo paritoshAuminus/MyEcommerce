@@ -4,7 +4,9 @@ function CartItem({
     srcImg='https://placehold.co/120x120/CFF3E0/0B6623?text=Product',
     name = 'Product name',
     price = 999,
-    setQuantity,
+    id,
+    handleQuant,
+    handleRemove,
     quantity=1,
     description='No description available'
 }) {
@@ -28,7 +30,7 @@ function CartItem({
                     <div className="inline-flex items-center rounded-lg bg-gray-100 p-1">
                         <button
                             type="button"
-                            onClick={() => setQuantity((prev) => prev - 1)}
+                            onClick={(e) => {handleQuant(e, '+')}}
                             className="px-3 py-1 text-lg font-medium text-gray-600 cursor-pointer"
                         >
                             −
@@ -36,7 +38,7 @@ function CartItem({
                         <div className="px-4 py-1 text-sm font-semibold">{quantity}</div>
                         <button
                             type="button"
-                            onClick={() => setQuantity((prev) => prev + 1)}
+                            onClick={(e) => {handleQuant(e, '-')}}
                             aria-label="Increase quantity"
                             className="px-3 py-1 text-lg font-medium text-gray-600 cursor-pointer"
                         >
@@ -46,6 +48,7 @@ function CartItem({
 
                     <div className="flex gap-3">
                         <button
+                            onClick={(e) => handleRemove(e, id)}
                             type="button"
                             className="text-red-600 hover:underline text-sm font-medium cursor-pointer"
                             aria-disabled="true"

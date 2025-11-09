@@ -254,24 +254,7 @@
       "id": 5
     }
   ],
-  "carts": [
-    {
-      "id": 1762582595571,
-      "userId": 1762422980751,
-      "productId": {
-        "productId": 2
-      },
-      "quantity": 1
-    },
-    {
-      "id": 1762582630389,
-      "userId": 1762422980751,
-      "productId": {
-        "productId": 1
-      },
-      "quantity": 1
-    }
-  ],
+  "carts": [],
   "orders": [],
   "reviews": []
 }

@@ -3,12 +3,50 @@ import { CartItem } from "../components";
 import { FaRegSadCry } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import services from "../auth/service";
 
 function Cart() {
 
   const [quantity, setQuantity] = useState(1)
-  const cartItems = useSelector((state) => state.cart.cart)
-  console.log(cartItems)
+  const cartItemsRaw = useSelector((state) => state.cart.cart)
+  const [cartItems, setCartItems] = useState([])
+
+  const handleQuant = (e, opr) => {
+    e.stopPropagation()
+    if (opr === '+') {
+      setQuantity((...prev) => prev + 1)
+    } else if (opr === '-') {
+      setQuantity((...prev) => prev - 1)
+    }
+  }
+
+  useEffect(() => {
+      const cartFetcher = async () => {
+        try {
+          const cartRes = await services.getCart();
+          const productRes = await services.getProducts();
+
+          const cartResult = cartRes.data.map((c) => productRes.data.find((p) => p.id === c.productId.productId))
+          console.log(cartRes)
+          console.log(cartResult)
+          setCartItems(cartResult)
+        } catch (err) {
+          console.error("Failed to fetch cart:", err);
+        }
+      };
+
+      cartFetcher();
+  }, [cartItemsRaw])
+
+
+  const handleRemove = async (id) => {
+    const response = await services.removeFromCart({ id: id })
+    console.log(response)
+  }
+
+  // useEffect(() => {
+  //   handleRemove(2)
+  // }, [])
 
   return (
     <div className="bg-gray-50 min-h-screen text-gray-800">
@@ -30,14 +68,19 @@ function Cart() {
             {/* Cart items */}
             {cartItems.length > 0 ?
               cartItems.map((item) => (
-                <CartItem
-                  key={Math.random()*10}
-                  srcImg={item.image}
-                  name={item.name}
-                  price={item.price}
-                  setQuantity={setQuantity}
-                  quantity={quantity}
-                  description={item.description} />
+                <Link to={`/products/${item.id}`}>
+                  <CartItem
+                    key={Math.random() * 10}
+                    id={item.id}
+                    srcImg={item.image}
+                    name={item.name}
+                    price={item.price}
+                    setQuantity={setQuantity}
+                    quantity={quantity}
+                    handleRemove={handleRemove}
+                    handleQuant={handleQuant}
+                    description={item.description} />
+                </Link>
               ))
               : <div className="w-full flex flex-col items-center justify-center gap-3 py-12 px-3">
                 <p className="text-3xl flex items-center gap-3 text-gray-400 font-semibold">The cart is empty <FaRegSadCry className='text-yellow-300' /></p>

@@ -25,26 +25,6 @@ function App() {
   }, [])
 
   useEffect(() => {
-    const cartFetcher = async () => {
-      try {
-        const cartRes = await services.getCart();
-        const productRes = await services.getProducts();
-
-        const cartResult = cartRes.data.map((c) => productRes.data.find((p) => p.id === c.productId.productId))
-        console.log(cartResult)
-        dispatch(setCart(cartResult))
-      } catch (err) {
-        console.error("Failed to fetch cart:", err);
-      }
-    };
-
-    cartFetcher();
-  }, []);
-
-
-
-
-  useEffect(() => {
     status ?
       toast.success('User logged in', {
         position: "bottom-right",

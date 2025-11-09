@@ -76,7 +76,7 @@ const Account = () => {
                         </p>
                     </div>
                     <div className="flex justify-self-start items-center">
-                        <Link to={'/profile'} className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
+                        <Link to={'/editProfile'} className="bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-4 py-2 rounded-lg transition cursor-pointer">
                             Edit Profile
                         </Link>
                     </div>

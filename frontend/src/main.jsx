@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { Home, Products, About, Contact, Login, Signup, Account, Cart } from './pages'
+import { Home, Products, About, Contact, Login, Signup, Account, Cart, NoPage, EditProfile } from './pages'
 import { Provider } from 'react-redux'
 import store from './store/store.js'
 import ProtectedRoute from './container/Container.jsx'
@@ -19,6 +19,7 @@ createRoot(document.getElementById('root')).render(
         <App />
         <ToastContainer />
         <Routes>
+          <Route path='*' element={<NoPage />} />
           <Route path='/' element={<Home />} />
           <Route path='/products' element={<Products />} />
           <Route path='/products/:id' element={<ProductDetails />} />
@@ -38,6 +39,13 @@ createRoot(document.getElementById('root')).render(
             element={
               <ProtectedRoute>
                 <Account />
+              </ProtectedRoute>
+            } />
+          <Route
+            path='/editProfile'
+            element={
+              <ProtectedRoute>
+                <EditProfile />
               </ProtectedRoute>
             } />
         </Routes>

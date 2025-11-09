@@ -108,6 +108,21 @@ class Services {
         }
     }
 
+    // remove item from cart
+    async removeFromCart({ id }) {
+        try {
+            const response = await axiosInstance.delete(`/cart/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            console.log(response)
+        } catch (error) {
+            console.log('services error :: removeFromCart ::', error)
+            throw error
+        }
+    }
+
 
     //--------------------------------------
     // ORDERS RELATED SERVICES
