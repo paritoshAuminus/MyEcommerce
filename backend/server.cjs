@@ -219,16 +219,59 @@ server.get('/cart', verifyToken, (req, res) => {
 })
 
 // add product to the cart
-server.post('/cart', verifyToken, (req, res) => {
-    const userId = req.user.id
-    const { productId, quantity } = req.body
-    if (!productId || !quantity)
-        return res.status(400).json({ message: 'productId and quantity required' })
+// server.post('/cart', verifyToken, (req, res) => {
+//     const userId = req.user.id
+//     const { productId, quantity = 1 } = req.body
+//     if (!productId || !quantity)
+//         return res.status(400).json({ message: 'productId and quantity required' })
 
-    const newItem = { id: Date.now(), userId, productId, quantity }
-    router.db.get('carts').push(newItem).write()
-    res.status(201).json(newItem)
-})
+//     // find if the item is already present, if yes increase quantity
+//     router.db.get('carts').find((item) => item.productId === productId)
+
+//     const newItem = { id: Date.now(), userId, productId, quantity }
+//     router.db.get('carts').push(newItem).write()
+//     res.status(201).json(newItem)
+// })
+
+// ⬆️(new version)⬆️ add product to the cart
+// add product to the cart
+server.post('/cart', verifyToken, (req, res) => {
+    const userId = req.user.id;
+    const { productId, quantity = 1 } = req.body;
+
+    if (!productId) {
+        return res.status(400).json({ message: 'productId is required' });
+    }
+
+    const carts = router.db.get('carts');
+
+    // check if this product already exists for this user
+    const existing = carts
+        .find(item => item.userId === userId && item.productId === productId)
+        .value();
+
+    if (existing) {
+        // item already in cart → update quantity
+        const updated = carts
+            .find({ id: existing.id })
+            .assign({ quantity: existing.quantity + quantity })
+            .write();
+
+        return res.status(200).json(updated);
+    }
+
+    // otherwise create a new cart entry
+    const newItem = {
+        id: Date.now(),
+        userId,
+        productId,
+        quantity
+    };
+
+    carts.push(newItem).write();
+    return res.status(201).json(newItem);
+});
+
 
 // update cart
 server.put('/cart/:id', verifyToken, (req, res) => {

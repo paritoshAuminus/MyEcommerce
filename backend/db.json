@@ -44,9 +44,9 @@
     },
     {
       "id": 1762422980751,
-      "name": "userSix",
+      "name": "usersix",
       "email": "usersix@gmail.com",
-      "password": "somepass",
+      "password": "somepassword",
       "role": "user"
     }
   ],
@@ -234,27 +234,44 @@
   ],
   "categories": [
     {
-      "name": "Home",
+      "name": "Electronics",
       "id": 1
     },
     {
-      "name": "Kitchen",
+      "name": "Furniture",
       "id": 2
     },
     {
-      "name": "Gaming",
+      "name": "Kitchen",
       "id": 3
     },
     {
-      "name": "Furniture",
+      "name": "Home",
       "id": 4
     },
     {
-      "name": "Electronics",
+      "name": "Gaming",
       "id": 5
     }
   ],
-  "carts": [],
+  "carts": [
+    {
+      "id": 1763114361025,
+      "userId": 1762422980751,
+      "productId": {
+        "productId": 1
+      },
+      "quantity": 1
+    },
+    {
+      "id": 1763114468592,
+      "userId": 1762422980751,
+      "productId": {
+        "productId": 1
+      },
+      "quantity": 1
+    }
+  ],
   "orders": [],
   "reviews": []
 }

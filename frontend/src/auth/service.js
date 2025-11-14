@@ -54,7 +54,6 @@ class Services {
 
         if (prc) price = prc
         if (ratng) rating = ratng
-        categories = cat
 
         try {
             const response = await axiosInstance.post('/products/filter', {
@@ -85,6 +84,7 @@ class Services {
                     Authorization: `Bearer ${localStorage.getItem('ecommerceToken')}`
                 }
             })
+            console.log(response)
             return response
         } catch (error) {
             throw error

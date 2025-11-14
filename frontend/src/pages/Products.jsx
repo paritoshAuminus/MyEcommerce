@@ -72,6 +72,7 @@ function Products() {
       ratng: rating,
       cat: selectedCategories
     })
+    console.log(response)
     setProducts(response.data)
     setFilterSidebar(false)
   }

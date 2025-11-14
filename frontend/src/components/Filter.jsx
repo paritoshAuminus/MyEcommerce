@@ -64,7 +64,7 @@ function Filter({
         <div className='p-3 shadow-lg'>
           <div className='flex gap-3'>
             <label htmlFor="price">Price:</label>
-            <span>&#8377;{price}</span>
+            <span>${price}</span>
           </div>
           <input
             className='appearence-none accent-indigo-600'
