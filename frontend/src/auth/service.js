@@ -108,6 +108,25 @@ class Services {
         }
     }
 
+    // update cart (quantity)
+    async updateCart({ cartItemId, quantity }) {
+        try {
+            const response = await axiosInstance.put(
+                `/cart/${cartItemId}`,
+                { quantity },
+                {
+                    headers: { Authorization: `Bearer ${token}` }
+                }
+            );
+            return response.data;
+        } catch (error) {
+            console.log('services error :: updateCart ::', error);
+            throw error;
+        }
+    }
+
+
+
     // remove item from cart
     async removeFromCart({ id }) {
         try {

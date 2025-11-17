@@ -11,7 +11,7 @@ function ProductCard({ product, handleAddToCart }) {
 
   const handleAdd = (e) => {
     e.stopPropagation(); // stops the click from reaching the parent div
-    handleAddToCart({ productId: product.id });
+    handleAddToCart(product.id);
   }
 
   return (

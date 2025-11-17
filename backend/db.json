@@ -256,19 +256,15 @@
   ],
   "carts": [
     {
-      "id": 1763114361025,
+      "id": 1763363318223,
       "userId": 1762422980751,
-      "productId": {
-        "productId": 1
-      },
+      "productId": 2,
       "quantity": 1
     },
     {
-      "id": 1763114468592,
+      "id": 1763385186025,
       "userId": 1762422980751,
-      "productId": {
-        "productId": 1
-      },
+      "productId": 2,
       "quantity": 1
     }
   ],

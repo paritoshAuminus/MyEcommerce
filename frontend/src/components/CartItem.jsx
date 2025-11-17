@@ -1,65 +1,81 @@
-import React from 'react'
+import { Link } from "react-router-dom";
+import services from "../auth/service";
 
-function CartItem({
-    srcImg='https://placehold.co/120x120/CFF3E0/0B6623?text=Product',
-    name = 'Product name',
-    price = 999,
-    id,
-    handleQuant,
-    handleRemove,
-    quantity=1,
-    description='No description available'
-}) {
+function CartItem({ cartItem, product, setCartItems }) {
+
+    const { id: cartItemId, quantity } = cartItem;
+    const { id, name, img, description, price } = product;
+
+    const handleUpdateQuantity = async (operation) => {
+        const newQuantity =
+            operation === "increment" ? quantity + 1 : quantity - 1;
+
+        if (newQuantity < 1) return;
+
+        try {
+            await services.updateCart({
+                cartItemId,
+                quantity: newQuantity
+            });
+
+            setCartItems(prev =>
+                prev.map(item =>
+                    item.id === cartItemId
+                        ? { ...item, quantity: newQuantity }
+                        : item
+                )
+            );
+
+        } catch (err) {
+            console.log("Error updating quantity:", err);
+        }
+    };
+
     return (
-        <article className="flex gap-4 md:gap-6 items-start border-b last:border-b-0 pb-6 mb-6">
-            <img
-                src={srcImg}
-                alt={name}
-                className="w-28 h-28 rounded-lg object-cover border-2 border-indigo-100"
-            />
-            <div className="flex-1">
-                <div className="flex justify-between items-start">
-                    <div>
-                        <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
-                        <p className='text-sm text-gray-600'>{description.slice(0, 60)}...</p>
-                    </div>
-                    <p className="text-lg font-bold text-gray-900">${price}</p>
+        <div className="flex flex-col sm:flex-row bg-white rounded-lg shadow-md hover:shadow-lg transition p-5 gap-4">
+
+            <Link to={`/products/${id}`}>
+                <img
+                    src={img}
+                    alt={name}
+                    className="w-36 h-32 object-cover rounded-md"
+                />
+            </Link>
+
+            <div className="flex flex-col justify-between w-full">
+
+                <div>
+                    <h3 className="font-semibold text-gray-800 text-xl">{name}</h3>
+                    <p className="text-gray-500 text-sm mt-1">{description}</p>
+                    <p className="text-indigo-600 font-bold text-lg mt-3">${price}</p>
                 </div>
 
-                <div className="mt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                    <div className="inline-flex items-center rounded-lg bg-gray-100 p-1">
+                <div className="flex justify-between items-center mt-4">
+                    <div className="flex items-center gap-3">
                         <button
-                            type="button"
-                            onClick={(e) => {handleQuant(e, '+')}}
-                            className="px-3 py-1 text-lg font-medium text-gray-600 cursor-pointer"
+                            className="w-8 h-8 flex items-center justify-center border border-gray-400 rounded hover:bg-gray-100 transition"
+                            onClick={() => handleUpdateQuantity("decrement")}
                         >
-                            −
+                            -
                         </button>
-                        <div className="px-4 py-1 text-sm font-semibold">{quantity}</div>
+
+                        <span className="text-gray-800 font-semibold">{quantity}</span>
+
                         <button
-                            type="button"
-                            onClick={(e) => {handleQuant(e, '-')}}
-                            aria-label="Increase quantity"
-                            className="px-3 py-1 text-lg font-medium text-gray-600 cursor-pointer"
+                            className="w-8 h-8 flex items-center justify-center border border-gray-400 rounded hover:bg-gray-100 transition"
+                            onClick={() => handleUpdateQuantity("increment")}
                         >
                             +
                         </button>
                     </div>
 
-                    <div className="flex gap-3">
-                        <button
-                            onClick={(e) => handleRemove(e, id)}
-                            type="button"
-                            className="text-red-600 hover:underline text-sm font-medium cursor-pointer"
-                            aria-disabled="true"
-                        >
-                            Remove
-                        </button>
-                    </div>
+                    <button className="px-4 py-1 text-red-600 border border-red-500 rounded hover:bg-red-50 transition font-medium">
+                        Remove
+                    </button>
                 </div>
             </div>
-        </article>
-    )
+        </div>
+    );
 }
 
 export default CartItem
